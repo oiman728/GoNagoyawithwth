@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannah's Japan Adventure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#FFFBF6;
+  --card:#FFFFFF;
+  --pink:#F8D7DA;
+  --green:#DCEFD9;
+  --brown:#7D6857;
+  --shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+*{
+ box-sizing:border-box;
+}
+
+body{
+ margin:0;
+ padding:20px;
+ background:var(--bg);
+ font-family:'Kiwi Maru',sans-serif;
+ color:var(--brown);
+}
+
+.header{
+ text-align:center;
+ margin-bottom:25px;
+}
+
+.header h1{
+ font-size:32px;
+ margin:0;
+}
+
+.header p{
+ opacity:.8;
+}
+
+.day-card{
+ background:var(--card);
+ border-radius:20px;
+ padding:18px;
+ margin-bottom:20px;
+ box-shadow:var(--shadow);
+ border:2px solid #f4ebe5;
+}
+
+.day-title{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ margin-bottom:10px;
+}
+
+.day-title input{
+ font-size:18px;
+ font-weight:bold;
+ border:none;
+ background:none;
+ width:70%;
+ color:var(--brown);
+}
+
+.stamp{
+ cursor:pointer;
+ border:none;
+ padding:10px 16px;
+ border-radius:30px;
+ background:var(--pink);
+ font-size:16px;
+}
+
+.stamp.done{
+ background:var(--green);
+}
+
+.field{
+ margin-top:10px;
+}
+
+.field label{
+ display:block;
+ font-size:14px;
+ margin-bottom:5px;
+}
+
+.field input,
+.field textarea{
+ width:100%;
+ border:1px solid #ddd;
+ border-radius:12px;
+ padding:10px;
+ font-family:inherit;
+}
+
+textarea{
+ min-height:70px;
+}
+
+.add-btn{
+ width:100%;
+ padding:14px;
+ background:#f6d7d7;
+ border:none;
+ border-radius:18px;
+ cursor:pointer;
+ font-size:16px;
+ margin-bottom:30px;
+}
+
+.shopping{
+ background:white;
+ padding:20px;
+ border-radius:20px;
+ box-shadow:var(--shadow);
+}
+
+.shopping h2{
+ margin-top:0;
+}
+
+.shop-item{
+ display:block;
+ margin-bottom:8px;
+}
+
+.notes{
+ margin-top:25px;
+ background:white;
+ border-radius:20px;
+ padding:20px;
+ box-shadow:var(--shadow);
+}
+
+footer{
+ text-align:center;
+ margin-top:35px;
+ opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🌸 Hannah's Japan Adventure 🌸</h1>
+<p>Family Travel Planner</p>
+</div>
+
+<div id="tripContainer"></div>
+
+<button class="add-btn" onclick="addDestination()">
+➕ Add Destination
+</button>
+
+<div class="shopping">
+<h2>🛍 Shopping List</h2>
+
+<label class="shop-item">
+<input type="checkbox"> On Cloud
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Workman
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Miki House
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Birthday
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Petit Main
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Loft
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> 3COINS
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Pokemon Center
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Disney Store
+</label>
+
+<label class="shop-item">
+<input type="checkbox"> Daiso
+</label>
+
+</div>
+
+<div class="notes">
+<h2>📝 Travel Notes</h2>
+<textarea id="travelNotes"></textarea>
+</div>
+
+<footer>
+🌿 Japanese Soft Storybook Style Planner 🌿
+</footer>
+
+<script>
+
+let tripData = JSON.parse(localStorage.getItem("tripData")) || [
+
+{
+date:"11 Nov",
+destination:"Anpanman Museum",
+mapcode:"38 880 073*16",
+notes:""
+},
+
+{
+date:"12 Nov",
+destination:"Ghibli Park",
+mapcode:
